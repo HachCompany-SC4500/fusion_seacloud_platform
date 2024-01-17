@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+  <remote alias="repo" fetch="https://github.com/schnitzeltony" name="githe"/>
+  <remote alias="repo" fetch="https://github.com/Freescale" name="githf"/>
+  <remote alias="repo" fetch="https://github.com/OSSystems" name="githo"/>
+  <remote alias="repo" fetch="https://github.com/meta-qt5" name="githq"/>
+  <remote alias="repo" fetch="https://github.com/meta-rust" name="githr"/>
+  <remote alias="repo" fetch="https://github.com/sbabic" name="giths"/>
+  <remote alias="repo" fetch="ssh://git@stash.waterqualitytools.com:7999/fcfw" name="hach"/>
+  <remote alias="repo" fetch="ssh://git@bitbucket.org/adeneo-embedded" name="witekio"/>
+  <remote alias="repo" fetch="ssh://git@bitbucket.org/sschiele" name="sschiele"/>
+  <remote alias="repo" fetch="https://github.com/openembedded" name="oe"/>
+  <remote alias="repo" fetch="https://git.toradex.com" name="tdx"/>
+  <remote alias="repo" fetch="https://git.yoctoproject.org/git" name="yocto"/>
+
+  <default sync-j="4"/>
+
+  <project name="g1265-hach-lange-mirror-meta-swupdate-eagle.git" path="layers/fusion_meta-swupdate" remote="witekio" revision="feature/FCON2-893-migration-toradex-3.0-delivery"/>
+  <project name="g1265-hach-lange-mirror-meta-toradex-bsp-common.git" path="layers/fusion_meta-toradex-bsp-common" remote="witekio" revision="feature/FCON2-893-migration-toradex-3.0-delivery"/>
+  <project name="g1265-hach-lange-mirror-fusion_seacloud_meta-seacloud-bsp.git" path="layers/meta-seacloud-bsp" remote="witekio" revision="feature/FCON2-893-migration-toradex-3.0-delivery">
+    <copyfile dest="export" src="buildconf/export"/>
+  </project>
+  <project name="g1265-hach-lange-mirror-fusion_seacloud_meta-seacloud.git" path="layers/meta-seacloud" remote="witekio" revision="feature/FCON2-893-migration-toradex-3.0-delivery"/>
+  <project name="bitbake.git" path="layers/openembedded-core/bitbake" remote="oe" revision="4ce92f43eeac6a4bfd06e8567fa6891614b5b3b0" upstream="1.40"/>
+  <project name="meta-browser.git" path="layers/meta-browser" remote="githo" revision="2c3c891f776e86faad1f759676cb2bfff32df4a8" upstream="master"/>
+  <project name="meta-freescale-3rdparty.git" path="layers/meta-freescale-3rdparty" remote="githf" revision="545e8094a140231e78b9284c3a3d94fcc573ae98" upstream="thud"/>
+  <project name="meta-freescale-distro.git" path="layers/meta-freescale-distro" remote="githf" revision="4a244af3993ae662624c6f615464e6806cc719a2" upstream="thud"/>
+  <project name="meta-freescale.git" path="layers/meta-freescale" remote="githf" revision="b73854c078b0a174613135b60da3377a1055f477" upstream="thud"/>
+  <project name="meta-lxde.git" path="layers/meta-lxde" remote="tdx" revision="91516dbc14d41613367a75048fbabaf78f3b1a12" upstream="thud"/>
+  <project name="meta-openembedded.git" path="layers/meta-openembedded" remote="oe" revision="9b3b907f30b0d5b92d58c7e68289184fda733d3e" upstream="thud"/>
+  <project name="meta-qt5-extra.git" path="layers/meta-qt5-extra" remote="githe" revision="641aabf595c78702d16c99d1191a4ac655472ff8" upstream="thud"/>
+  <project name="meta-qt5.git" path="layers/meta-qt5" remote="githq" revision="1520d5b2b2beec5e1c3209d3178219e93ef08bca" upstream="thud"/>
+  <project name="meta-rust.git" path="layers/meta-rust" remote="githr" revision="c5ff05d1e99c1e80844c1673456e2368499918c7" upstream="master"/>
+  <project name="meta-toradex-bsp-common.git" path="layers/meta-toradex-bsp-common" remote="tdx" revision="d7265604f72ddcc5ca1c443847c1244952700f2d" upstream="thud"/>
+  <project name="meta-toradex-demos.git" path="layers/meta-toradex-demos" remote="tdx" revision="082483f155b2e853189cdd8f82d07a98b74f28fe" upstream="thud"/>
+  <project name="meta-toradex-distro.git" path="layers/meta-toradex-distro" remote="tdx" revision="d7da0a883f855c518475811f21fce089b95570f7" upstream="thud"/>
+  <project name="meta-toradex-nxp.git" path="layers/meta-toradex-nxp" remote="tdx" revision="ba278cfe4fa79db91727b783f7f900ab72833d36" upstream="thud"/>
+  <project name="meta-toradex-tegra.git" path="layers/meta-toradex-tegra" remote="tdx" revision="942156423c8d1d13081cb9c1ed1f1d56cfbbe87e" upstream="thud"/>
+  <project name="meta-yocto" path="layers/meta-yocto" remote="yocto" revision="9a1d9fd77e2dd2d324654755633e143ef7730dc5" upstream="thud"/>
+  <project name="openembedded-core.git" path="layers/openembedded-core" remote="oe" revision="d3d3f443039b03f1200a14bfe99f985592632018" upstream="thud"/>
+  <project name="meta-swupdate.git" path="layers/meta-swupdate" remote="giths" revision="36c07285ed0e5b2a9f7623c47ec17b0255123ebf"/>
+  <project name="g1248-hach-lange-bsp-buildcontainer.git" path="build/buildcontainer" remote="witekio" revision="SCR2-3">
+    <linkfile dest="buildcontainer.sh" src="launcher.sh"/>
+  </project>
+</manifest>
