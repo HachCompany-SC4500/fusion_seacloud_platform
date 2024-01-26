@@ -13,12 +13,12 @@
   <default sync-j="4" />
   
   <project name="bitbake.git" path="layers/openembedded-core/bitbake" remote="oe" revision="4ce92f43eeac6a4bfd06e8567fa6891614b5b3b0" />
-  <project name="fusion_meta-swupdate.git" path="layers/fusion_meta-swupdate" remote="hach" revision="61b2a8a67669362b24cb9d3edc54ac0a31121731" />
-  <project name="fusion_meta-toradex-bsp-common.git" path="layers/fusion_meta-toradex-bsp-common" remote="hach" revision="e41a31e239d9b4ef5953f7e2fdee009c8f966fbb" />
-  <project name="fusion_seacloud_meta-seacloud-bsp.git" path="layers/meta-seacloud-bsp" remote="hach" revision="557f80de56826a632787c1f9a750b0949d241d95">
+  <project name="fusion_meta-swupdate.git" path="layers/fusion_meta-swupdate" remote="hach" revision="671c42fe4043aabe7fb85c0c36bbd14ae455839c" />
+  <project name="fusion_meta-toradex-bsp-common.git" path="layers/fusion_meta-toradex-bsp-common" remote="hach" revision="b2b8ad3bf6cec850fa3445068c5e189f689876e2" />
+  <project name="fusion_seacloud_meta-seacloud-bsp.git" path="layers/meta-seacloud-bsp" remote="hach" revision="8ef44d544bc3cbcf2b5307d1adf6eaf2f4e668b9">
     <copyfile dest="export" src="buildconf/export" />
   </project>
-  <project name="fusion_seacloud_meta-seacloud.git" path="layers/meta-seacloud" remote="hach" revision="0c53b4b3f8ce04b1fd62b9447fe054a3a096cefc" />
+  <project name="fusion_seacloud_meta-seacloud.git" path="layers/meta-seacloud" remote="hach" revision="492d9a75b606eb9c6862180924f6c116b9c1e351" />
   <project name="meta-browser.git" path="layers/meta-browser" remote="githo" revision="2c3c891f776e86faad1f759676cb2bfff32df4a8" />
   <project name="meta-freescale-3rdparty.git" path="layers/meta-freescale-3rdparty" remote="githf" revision="545e8094a140231e78b9284c3a3d94fcc573ae98" />
   <project name="meta-freescale-distro.git" path="layers/meta-freescale-distro" remote="githf" revision="4a244af3993ae662624c6f615464e6806cc719a2" />
