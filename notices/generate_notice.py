@@ -20,6 +20,7 @@ DEPLOY_LOCATION = '../../../deploy'
 DEPLOY_IMAGE_LOCATION = '../../../deploy/images/colibri-imx7-emmc-1370'
 LICENSE_LOCATION = os.path.join(DEPLOY_LOCATION, 'licenses')
 BEFE_LICENSE_LOCATION = os.path.join(DEPLOY_IMAGE_LOCATION, 'BEFE-licenses.json')
+FCC_LICENSE_LOCATION = os.path.join(DEPLOY_IMAGE_LOCATION, 'FCC-licenses.json')
 
 class DocumentGenerator(ABC):
     """
@@ -135,6 +136,27 @@ print("Using information found in folder {}".format(LICENSE_LOCATION))
 generators = [PdfGenerator()]
 #generators.append(DocxGenerator())
 
+# Populate the provided document with given data
+# Add page break, header and necessary data for tracking licenses
+def populate_data_in_document(data, current_document):
+    for node in data:
+        current_document.add_page_break()
+        current_document.add_heading(node,1)
+        
+        # populate information with expected order
+        if 'licenses' in  data[node]:
+            current_document.add_heading('License',2)
+            current_document.add_paragraph(data[node]['licenses'])
+        if 'publisher' in  data[node]:
+            current_document.add_heading('Publisher',2)
+            current_document.add_paragraph(data[node]['publisher'])
+        if 'repository' in  data[node]:
+            current_document.add_heading('Repository',2)
+            current_document.add_paragraph(data[node]['repository'])
+        if 'licenseFile' in  data[node]:
+            current_document.add_heading('License file',2)
+            current_document.add_paragraph(data[node]['licenseFile'], font_size=6)
+
 # Generate licenses file for OS part
 for document in generators:
     document.add_title("{} Open Source Software Notices and Licenses".format(CONTROLLER_NAME))
@@ -182,9 +204,15 @@ for document in generators:
                 file_data = content.read()
                 # Remove XML standard unsupported control characters (currently only Form Feed character (0x0C) cause a problem)
                 file_data = ''.join(c for c in file_data if ord(c) >= 160 or (ord(c) >= 32 and ord(c) <= 128 ) or ord(c) == 0x09 or ord(c) == 0x0A or ord(c) == 0x0D)
+
                 document.add_paragraph('{}'.format(file_data), font_size=6)
 
         document.add_page_break()
+
+    # Handle extra open source lib that RTC code is using
+    with open(FCC_LICENSE_LOCATION,encoding='iso-8859-1') as json_file:
+        data = json.load(json_file, object_pairs_hook=OrderedDict)
+        populate_data_in_document(data, document)
 
     document.save(os.path.join(DEPLOY_LOCATION, '{}_OSS_Notices'.format(CONTROLLER_NAME)))
 
@@ -199,23 +227,7 @@ befe_document.add_paragraph('This file contains attributions, copyright notices 
 
 with open(BEFE_LICENSE_LOCATION,encoding='iso-8859-1') as json_file:
     data = json.load(json_file, object_pairs_hook=OrderedDict)
-
-    for node in data:
-        befe_document.add_page_break()
-        befe_document.add_heading(node,1)
-        # populate information with expected order
-        if 'licenses' in  data[node]:
-            befe_document.add_heading('License',2)
-            befe_document.add_paragraph(data[node]['licenses'])
-        if 'publisher' in  data[node]:
-            befe_document.add_heading('Publisher',2)
-            befe_document.add_paragraph(data[node]['publisher'])
-        if 'repository' in  data[node]:
-            befe_document.add_heading('Repository',2)
-            befe_document.add_paragraph(data[node]['repository'])
-        if 'licenseFile' in  data[node]:
-            befe_document.add_heading('License file',2)
-            befe_document.add_paragraph(data[node]['licenseFile'], font_size=6)
+    populate_data_in_document(data, befe_document) 
 
 befe_document.save(os.path.join(DEPLOY_LOCATION, '{}_{}_OSS_Notices'.format(CONTROLLER_NAME,CONTROLLER_BEFE))) 
 
